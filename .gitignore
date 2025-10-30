@@ -1,0 +1,4 @@
+# Ignore all directories
+*/
+# Don't ignore surfingkeys directory
+!surfingkeys/

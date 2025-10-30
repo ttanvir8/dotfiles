@@ -1,0 +1,73 @@
+/*
+// customize youtube shortcuts
+api.unmap("j", /youtube/);
+api.unmap("k", /youtube/);
+api.unmap("l", /youtube/);
+api.unmap("0", /youtube/);
+api.unmap("Shift->", /youtube/);
+api.unmap("Shift-<", /youtube/);
+api.unmap("<<", /youtube/);
+api.unmap(">>", /youtube/);
+api.unmap("d", /gregmat/);
+api.unmap("g", /gregmat/);
+api.unmap("r", /gregmat/);
+
+
+api.map("F", "af");
+// switching tabs remap
+api.map("a", "E");
+api.map("s", "R");
+api.map("e", "<Ctrl-6>");
+
+
+//omnibar tab search
+api.mapkey('w', 'Choose a tab with omnibar', function() {
+    api.Front.openOmnibar({type: "Tabs"});
+});
+
+
+//////////////////////////new restart of edge////////
+//api.unmapAllExcept(['a','s'], /localhost:/)
+api.unmapAllExcept(['a','s'], /docs/)
+*/
+// customize youtube shortcuts
+api.unmap("j", /youtube/);
+api.unmap("k", /youtube/);
+api.unmap("l", /youtube/);
+api.unmap("0", /youtube/);
+api.unmap("Shift->", /youtube/);
+api.unmap("Shift-<", /youtube/);
+api.unmap("<<", /youtube/);
+api.unmap(">>", /youtube/);
+api.unmap("d", /gregmat/);
+api.unmap("g", /gregmat/);
+api.unmap("r", /gregmat/);
+
+
+api.map("F", "af");
+// switching tabs remap
+api.map("a", "E");
+api.map("s", "R");
+api.map("e", "<Ctrl-6>");
+
+
+//omnibar tab search
+api.mapkey('w', 'Choose a tab with omnibar', function() {
+    api.Front.openOmnibar({type: "Tabs"});
+});
+
+
+//////////////////////////new restart of edge////////
+//api.unmapAllExcept(['a','s'], /localhost:/)
+//api.unmapAllExcept(['a','s'], /docs/)
+//api.unmapAllExcept(['a','s'], "https://docs.google.com/document/")
+// Disable Surfingkeys on Google Docs
+//settings.blocklistPattern = /docs\.google\.com\/document\//i;
+api.unmapAllExcept([], /docs\.google\.com/i);
+settings.blocklistPattern = /.*docs\.google\.com.*/;
+// Block everything except 'a' and 's' on Google Docs
+// Permit only 'a' and 's' in Google Docs
+//api.unmapAllExcept(['a', 's'], /docs\.google\.com\/document\//i);
+
+// Optionally, apply full Surfingkeys features everywhere else
+// (Your existing mappings can stay as-is for other sites)
