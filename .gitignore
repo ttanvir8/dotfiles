@@ -2,3 +2,4 @@
 */
 # Don't ignore surfingkeys directory
 !surfingkeys/
+!prompts/
