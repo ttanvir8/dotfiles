@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    selected=$(find ~ ~/.config ~/code ~/fun ~/personal ~/work ~/research -mindepth 0 -maxdepth 5 -type d | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+# Open the selected directory in Finder
+open "$selected"

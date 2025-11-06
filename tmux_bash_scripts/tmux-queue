@@ -1,0 +1,42 @@
+#!/bin/bash
+
+QUEUE_FILE="$HOME/.tmux_queue"
+
+case "$1" in
+    add)
+        current=$(tmux display-message -p "#S")
+        echo "$current" >> "$QUEUE_FILE"
+        ;;
+    delete)
+        current=$(tmux display-message -p "#S")
+        grep -v "$current" "$QUEUE_FILE" > "${QUEUE_FILE}.tmp" && mv "${QUEUE_FILE}.tmp" "$QUEUE_FILE"
+        ;;
+    switch)
+        if [[ -z "$2" ]]; then
+            echo "Need a key for switch"
+            exit 1
+        fi
+
+        case "$2" in
+            a) index=1 ;;
+            s) index=2 ;;
+            d) index=3 ;;
+            f) index=4 ;;
+            *) index= ;;
+        esac
+        if [[ -z "$index" ]]; then
+            echo "Invalid key"
+            exit 1
+        fi
+        session=$(sed -n "${index}p" "$QUEUE_FILE")
+        if [[ -z "$session" ]]; then
+            echo "No session at position $index"
+            exit 1
+        fi
+        tmux switch-client -t "$session"
+        ;;
+    *)
+        echo "Usage: $0 {add|delete|switch [key]}"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    sessions=$(tmux list-sessions -F "#{session_last_attached} #{session_name}" 2>/dev/null | sort -nr | head -n 30 | awk '{cmd="date -r " $1 " +\"%d %b, %I:%M %p\""; cmd | getline date_str; close(cmd); print date_str "  " $2}')
+    if [[ -z "$sessions" ]]; then
+        echo "No active tmux sessions found"
+        exit 1
+    fi
+    
+selected=$(echo "$sessions" | fzf --prompt="Select recent session: " --height=70% --border)
+if [[ -z "$selected" ]]; then
+    exit 0
+fi
+selected=$(echo "$selected" | awk '{print $NF}')
+fi
+
+if [[ -z "$TMUX" ]]; then
+    tmux attach-session -t "$selected"
+else
+    tmux switch-client -t "$selected"
+fi

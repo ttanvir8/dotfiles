@@ -3,3 +3,5 @@
 # Don't ignore surfingkeys directory
 !surfingkeys/
 !prompts/
+!tmux_bash_scripts/
+!tmux/
