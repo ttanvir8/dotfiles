@@ -1,8 +1,10 @@
 # Ignore all directories
 */
-# Don't ignore surfingkeys directory
+# Don't ignore these directories
 !surfingkeys/
 !prompts/
 !tmux_bash_scripts/
 !tmux/
-!nvim_dotfile
+# Track files in nvim_dotfile root but ignore subdirectories
+!nvim_dotfile/
+nvim_dotfile/*/
