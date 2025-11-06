@@ -1,10 +1,10 @@
 # Ignore all directories
 */
 # Don't ignore these directories
+!nvim_dotfile
+!nvim_dotfile/**
 !surfingkeys/
 !prompts/
 !tmux_bash_scripts/
 !tmux/
-# Track files in nvim_dotfile root but ignore subdirectories
-!nvim_dotfile/
-nvim_dotfile/*/
+!nvim/
